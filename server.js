@@ -3,10 +3,11 @@ const fs = require("fs");
 const path = require("path");
 const { notes } = require("./db/db.json");
 const PORT = process.env.PORT || 3001;
+const router = require("express").Router();
 
 const app = express();
 
-app.use(express.static('develop'));
+app.use(express.static('public'));
 // parse incoming string or array data
 app.use(express.urlencoded({ extended: true }));
 // parse incoming JSON data
@@ -24,14 +25,14 @@ function addNote(body, noteArr) {
 }
 
 
-app.post("/api/notes", (req, res) => {
+router.post("/api/notes", (req, res) => {
   req.body.id = notes.length.toString();
 
   const note = addNote(req.body, notes);
   res.json(note);
 });
 
-app.get("/api/notes", (req, res) => {
+router.get("/api/notes", (req, res) => {
   res.json(notes);
 
 });
