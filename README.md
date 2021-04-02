@@ -2,8 +2,7 @@
 
 ## Description 
   This webapp, deployed to heroku, will keep track of your notes using an express powered server using GET and POST methods. In this app you can add a note with a title and a description and it will save the note and add it to the left-hand side of the screen. You can then click on the title and it will open up into the center area and show the description. Soon to be added is the delete method.
-https://dashboard.heroku.com/apps/warm-reef-32686
-
+https://warm-reef-32686.herokuapp.com/
 ## Table of Contents
 
 * [Installation](#installation)
