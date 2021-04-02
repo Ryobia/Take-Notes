@@ -38,3 +38,5 @@ https://dashboard.heroku.com/apps/warm-reef-32686
 
   *If you would like to contact the developer you may do so at their [Email](mailto:ryobia36@gmail.com).
   To see more from the developer please visit their [Github](https://github.com/Ryobia) profile.
+  
+  ![screenshot](https://github.com/Ryobia/Take-Notes/blob/main/2021-04-01.png)
