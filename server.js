@@ -1,9 +1,10 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
-const { notes } = require("./db/db.json");
+const {notes} = require("./db/db");
+console.log(notes);
+
 const PORT = process.env.PORT || 3001;
-const router = require("express").Router();
 
 const app = express();
 
@@ -21,20 +22,39 @@ function addNote(body, noteArr) {
     JSON.stringify({ notes: noteArr }, null, 2)
   );
 
-  return animal;
+  return note;
 }
 
 
-router.post("/api/notes", (req, res) => {
+app.post("/api/notes", (req, res) => {
   req.body.id = notes.length.toString();
 
   const note = addNote(req.body, notes);
   res.json(note);
 });
 
-router.get("/api/notes", (req, res) => {
-  res.json(notes);
+app.get("/api/notes", (req, res) => {
+  let results = notes;
+  res.json(results);
 
+});
+
+app.delete("/api/notes/:id", (req, res) => {
+  id = req.params.id;
+  let newNotes = notes.filter(function(n)  {
+    return n.id !== id;
+});
+
+//Did my best, this was able to create a new file but it would only delete one note per server run
+//If I want to delete multiple notes I have to restart the server after each delete for it to take effect.
+
+// try {
+//   fs.writeFileSync('./db/db.json', JSON.stringify(newNotes, null, 2));
+//   //file written successfully
+// } catch (err) {
+//   console.error(err)
+// }
+  res.send(newNotes);
 });
 
 app.get('/', (req, res) => {
